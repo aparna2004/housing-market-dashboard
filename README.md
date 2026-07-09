@@ -1,16 +1,8 @@
 # US Housing Market Dynamics
 
-Simple static dashboard for the last problem in `Problem Statement - DV.pdf`.
+Simple static dashboard for the last problem 3
 
-## Run
-
-Open `index.html` in a browser, or serve the folder with any static server.
-
-```bash
-python3 -m http.server 8000
-```
-
-Then visit `http://localhost:8000`.
+https://aparna2004.github.io/housing-market-dashboard/
 
 ## Data
 
