@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>US Housing Market Dynamics</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Interactive dashboard</p>
+        <h1>US Housing Market Dynamics</h1>
+        <p class="lede">
+          Explore state and county-level pricing, inventory, demand pressure, seasonality,
+          and buyer/seller signals from housing-market metrics.
+        </p>
+      </div>
+      <label class="upload">
+        <span>Import CSV</span>
+        <input id="csvInput" type="file" accept=".csv,text/csv" />
+      </label>
+    </header>
+
+    <main>
+      <section class="panel controls" aria-label="Dashboard filters">
+        <label>
+          State
+          <select id="stateSelect"></select>
+        </label>
+        <label>
+          County
+          <select id="countySelect"></select>
+        </label>
+        <label>
+          Metric
+          <select id="metricSelect">
+            <option value="median_sale_price">Median sale price</option>
+            <option value="median_list_price">Median list price</option>
+            <option value="inventory">Inventory</option>
+            <option value="new_listings">New listings</option>
+            <option value="median_days_on_market">Median days on market</option>
+            <option value="sold_above_list">Sold above list %</option>
+            <option value="price_drops">Price drops</option>
+          </select>
+        </label>
+      </section>
+
+      <section class="grid cards" id="cards" aria-label="Key market indicators"></section>
+
+      <section class="grid two">
+        <article class="panel chart-panel">
+          <div class="section-title">
+            <div>
+              <p class="eyebrow">Trend</p>
+              <h2 id="trendTitle">Metric over time</h2>
+            </div>
+            <span id="trendBadge" class="badge"></span>
+          </div>
+          <canvas id="trendChart" width="900" height="420"></canvas>
+        </article>
+
+        <article class="panel chart-panel">
+          <div class="section-title">
+            <div>
+              <p class="eyebrow">Seasonality</p>
+              <h2>Average by month</h2>
+            </div>
+          </div>
+          <canvas id="seasonChart" width="900" height="420"></canvas>
+        </article>
+      </section>
+
+      <section class="grid two">
+        <article class="panel">
+          <p class="eyebrow">Hierarchy</p>
+          <h2>County comparison</h2>
+          <div id="countyBars" class="bars"></div>
+        </article>
+
+        <article class="panel">
+          <p class="eyebrow">Insights</p>
+          <h2>Buyer and seller signals</h2>
+          <ul id="insights" class="insights"></ul>
+        </article>
+      </section>
+
+      <section class="panel notes">
+        <h2>Data notes</h2>
+        <p>
+          The PDF data link returned 404 during implementation, so this dashboard includes a
+          representative sample covering 2019-2022 and a CSV importer. Use the importer with the
+          original file when available. Expected columns include date/period, state, county, and any
+          supported metrics such as <code>median_sale_price</code>, <code>inventory</code>,
+          <code>sold_above_list</code>, or <code>median_days_on_market</code>.
+        </p>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
